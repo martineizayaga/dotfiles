@@ -1,0 +1,15 @@
+_HiStOrY_V2_
+$user\040=\040new\040App\134User();
+$user->password\040=\040Hash::make('tincho123');
+$user->email\040=\040'martineizayaga@gmail.com';
+$user->save();
+$user;
+$user->name\040=\040'Martin\040Eizayaga';
+$user->save();
+$user\040=\040App\134User;
+$user\040=\040new\040App\134User();
+$user->password\040=\040Hash::make('tincho123');
+$user->email\040=\040'martineizayaga@gmail.com';
+$user->save();
+$user->name\040=\040'Martin\040Eizayaga';
+$user->save();
