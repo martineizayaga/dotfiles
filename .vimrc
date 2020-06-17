@@ -9,6 +9,19 @@ Plug 'bling/vim-airline'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'dyng/ctrlsf.vim'
+" Vim-Orgmode {{{
+Plug 'jceb/vim-orgmode'
+
+" suggested plugins {{{
+Plug 'vim-scripts/utl.vim'
+Plug 'tpope/vim-repeat'
+Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-speeddating'
+Plug 'mattn/calendar-vim'
+" }}}
+"
+" }}}
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -17,6 +30,7 @@ Plug 'preservim/nerdtree'
 
 let NERDTreeShowHidden=1
 " }}}
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline-themes'
@@ -40,7 +54,7 @@ set expandtab
 " }}}
 
 " UI Config {{{
-set number " show line numbers
+set relativenumber " show line numbers
 set cursorline " highlight current line
 filetype indent on " use filetype-specific rules
                    " e.g. ~/.vim/indent/python.vim for *.py files
