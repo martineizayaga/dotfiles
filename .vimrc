@@ -8,34 +8,62 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'eliba2/vim-node-inspect'
 Plug 'dyng/ctrlsf.vim'
+Plug 'heavenshell/vim-jsdoc'
 " Vim-Orgmode {{{
 Plug 'jceb/vim-orgmode'
 
 " suggested plugins {{{
 Plug 'vim-scripts/utl.vim'
 Plug 'tpope/vim-repeat'
+
+" vim-surrround {{{
+Plug 'tpope/vim-surround'
+" }}}
+ 
 Plug 'vim-scripts/taglist.vim'
 Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-speeddating'
 Plug 'mattn/calendar-vim'
-" }}}
-"
-" }}}
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " NERDTree {{{
 Plug 'preservim/nerdtree'
-
 let NERDTreeShowHidden=1
+" }}}
+
+" vim-javascript {{{
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_jsdoc = 1
 " }}}
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-speeddating'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/Conque-Shell'
+" Vim-Test {{{
 Plug 'vim-test/vim-test'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+let test#javascript#runner = 'mocha'
+let test#javascript#options = "MOCK_LOGGER='true'"
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+" Ale {{{
+Plug 'w0rp/ale'
+" https://davidtranscend.com/blog/configure-eslint-prettier-vim/
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \}
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
+" }}}
 call plug#end()
 " }}}
 
@@ -82,9 +110,6 @@ set foldmethod=indent
 " }}}
 
 " Movement {{{
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
 " highlight last inserted text
 nnoremap gV `[v`]
 " }}}
@@ -140,6 +165,7 @@ augroup configgroup
     autocmd VimEnter * highlight clear SignColumn
     " autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
     "            \:call <SID>StripTrailingWhitespaces()
+    autocmd FileType *.org setlocal maplocalleader=","
     autocmd FileType java setlocal noexpandtab
     autocmd FileType java setlocal list
     autocmd FileType java setlocal listchars=tab:+\ ,eol:-
