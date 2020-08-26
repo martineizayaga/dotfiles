@@ -1,0 +1,107 @@
+urls-source "ocnews"
+ocnews-url "https://cloud.martineizayaga.com"
+include "~/.newsboat/credentials"
+
+# -- feeds ---------------------------------------------------------------------
+
+auto-reload yes
+reload-time 120
+reload-threads 4
+download-retries 4
+download-timeout 10
+download-full-page yes
+prepopulate-query-feeds yes
+
+
+# -- display -------------------------------------------------------------------
+
+show-read-feeds no
+feed-sort-order unreadarticlecount-asc
+
+# Colors
+# color background          white   black
+# color listnormal          white   black
+# color listfocus           black   white bold
+# color listnormal_unread   magenta black
+# color listfocus_unread    magenta blue  bold
+# color info                black   white bold
+# color article             white   black
+
+articlelist-format "%4i %f %D %?T?|%-17T| ?%t"
+ 
+highlight feedlist "^ *[0-9]+ *N " color15 color0
+highlight articlelist "^ *[0-9]+ *N " color15 color0
+ 
+highlight article "^(Feed|Title|Author|Link|Date|Linux):.*" color75 default
+highlight article "^Podcast Download URL:.*" color71 default
+highlight article "^Links:" white color0 underline
+highlight article "\\[[0-9][0-9]*\\]" color72 default bold
+highlight article "\\[image [0-9][0-9]*\\]" color72 default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color72 default bold
+highlight article ":.*\\(link\\)$" color74 default
+highlight article ":.*\\(image\\)$" color74 default
+highlight article ":.*\\(embedded flash\\)$" color74 default
+ 
+color listnormal color208 color234
+color listnormal_unread color244 color234 
+color listfocus   color15 color0 blink
+color info  red default bold
+color listfocus_unread color166 color0 bold
+color info color38 color235
+color background color15 color0
+color article color15 color0 
+
+feedlist-format "%-65t %?d?- %-65d&? %> %u"
+feedlist-title-format "%N %V %> %u feeds with new articles"
+articlelist-title-format "%T"
+html-renderer "w3m -dump -T text/HTML -cols 100"
+highlight article "^(Feed|Title|Author|Link|Date):.*" color0 default blink
+notify-format  "%I %d %n %f new articles (%n unread articles, %f unread feeds)"
+
+text-width 80
+
+
+# -- navigation ----------------------------------------------------------------
+
+goto-next-feed no
+
+bind-key h quit articlelist
+bind-key h quit article
+bind-key h quit tagselection
+bind-key h quit feedlist
+bind-key j down feedlist
+bind-key j down tagselection
+bind-key j next articlelist
+bind-key j down article
+bind-key J next-feed articlelist
+bind-key k up feedlist
+bind-key k prev articlelist
+bind-key k up tagselection
+bind-key K prev-feed articlelist
+bind-key k up article
+bind-key l open articlelist
+bind-key l open feedlist
+bind-key l open tagselection
+
+bind-key G end
+bind-key g home
+
+bind-key d pagedown
+bind-key u pageup
+
+# -- bookmarks -----------------------------------------------------------------
+
+bookmark-cmd ~/.newsbeuter/bookmark.sh
+bookmark-interactive no
+bookmark-autopilot yes
+
+
+# -- misc ----------------------------------------------------------------------
+
+unbind-key C feedlist
+confirm-exit no
+cleanup-on-quit no
+browser "w3m %u"
+
+# -- filters -------------------------------------------------------------------
+define-filter "Twitter" "tags # \"Twitter\""
