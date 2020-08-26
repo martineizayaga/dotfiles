@@ -1,6 +1,6 @@
 " General {{{
 set showcmd
-" }}}
+
 
 " Plugins {{{
 call plug#begin()
@@ -8,7 +8,18 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+
+" Vim-Node-Inspect {{{
 Plug 'eliba2/vim-node-inspect'
+nnoremap <silent><F4> :NodeInspectStart<cr>
+nnoremap <silent><F5> :NodeInspectRun<cr>
+nnoremap <silent><F6> :NodeInspectConnect("127.0.0.1:9229")<cr>
+nnoremap <silent><F7> :NodeInspectStepInto<cr>
+nnoremap <silent><F8> :NodeInspectStepOver<cr>
+nnoremap <silent><F9> :NodeInspectToggleBreakpoint<cr>
+nnoremap <silent><F10> :NodeInspectStop<cr>
+" }}}
+
 Plug 'dyng/ctrlsf.vim'
 Plug 'heavenshell/vim-jsdoc'
 " Vim-Orgmode {{{
@@ -50,6 +61,7 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+Plug 'vimwiki/vimwiki'
 " Ale {{{
 Plug 'w0rp/ale'
 " https://davidtranscend.com/blog/configure-eslint-prettier-vim/
@@ -120,6 +132,7 @@ let g:NERDTreeChDirMode = 2
 
 " Leader Shortcuts {{{
 let mapleader=" "
+let maplocalleader=","
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -133,6 +146,8 @@ nnoremap <silent> <Leader>= :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <leader>nt :NERDTree<CR>
 nnoremap <leader>btr :BookmarkToRoot
+nmap <leader>twot :set expandtab tabstop=2 shiftwidth=2 softtabstop=2
+nmap <leader>fourt :set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " }}}
 
 " CtrlP {{{
@@ -165,7 +180,6 @@ augroup configgroup
     autocmd VimEnter * highlight clear SignColumn
     " autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
     "            \:call <SID>StripTrailingWhitespaces()
-    autocmd FileType *.org setlocal maplocalleader=","
     autocmd FileType java setlocal noexpandtab
     autocmd FileType java setlocal list
     autocmd FileType java setlocal listchars=tab:+\ ,eol:-

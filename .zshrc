@@ -1,5 +1,4 @@
-alias config='/usr/bin/git --git-dir=/Users/martineizayaga/.cfg/ --work-tree=/Users/martineizayaga'
-
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 source ~/.pihole.sh
 
 if command -v pyenv 1>/dev/null 2>&1; then
