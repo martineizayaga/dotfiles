@@ -18,15 +18,6 @@ prepopulate-query-feeds yes
 show-read-feeds no
 feed-sort-order unreadarticlecount-asc
 
-# Colors
-# color background          white   black
-# color listnormal          white   black
-# color listfocus           black   white bold
-# color listnormal_unread   magenta black
-# color listfocus_unread    magenta blue  bold
-# color info                black   white bold
-# color article             white   black
-
 articlelist-format "%4i %f %D %?T?|%-17T| ?%t"
  
 highlight feedlist "^ *[0-9]+ *N " color15 color0
@@ -41,7 +32,7 @@ highlight article "\\[embedded flash: [0-9][0-9]*\\]" color72 default bold
 highlight article ":.*\\(link\\)$" color74 default
 highlight article ":.*\\(image\\)$" color74 default
 highlight article ":.*\\(embedded flash\\)$" color74 default
- 
+
 color listnormal color208 color234
 color listnormal_unread color244 color234 
 color listfocus   color15 color0 blink
@@ -55,11 +46,10 @@ feedlist-format "%-65t %?d?- %-65d&? %> %u"
 feedlist-title-format "%N %V %> %u feeds with new articles"
 articlelist-title-format "%T"
 html-renderer "w3m -dump -T text/HTML -cols 100"
-highlight article "^(Feed|Title|Author|Link|Date):.*" color0 default blink
+highlight article "^(Feed|Title|Author|Link|Date):.*" color208 default blink
 notify-format  "%I %d %n %f new articles (%n unread articles, %f unread feeds)"
 
 text-width 80
-
 
 # -- navigation ----------------------------------------------------------------
 
