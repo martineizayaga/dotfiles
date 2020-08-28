@@ -92,6 +92,7 @@ unbind-key C feedlist
 confirm-exit no
 cleanup-on-quit no
 browser "w3m %u"
+macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
 
 # -- filters -------------------------------------------------------------------
 define-filter "Twitter" "tags # \"Twitter\""
